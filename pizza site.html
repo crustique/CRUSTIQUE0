@@ -1,15 +1,297 @@
-<section style="padding: 50px 20px; text-align: center; background: #fff;">
-        <h2 style="margin-bottom: 20px; color: #ff4500;">Contact Us</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slice of Heaven | Best Pizza in Town</title>
+    <style>
+        /* --- CSS STYLES --- */
         
-        <form name="pizza-contact" method="POST" netlify style="max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+        :root {
+            --primary-color: #ff4500; /* Pizza Red */
+            --secondary-color: #f4f4f4;
+            --text-dark: #333;
+            --text-light: #fff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-order {
+            background: var(--primary-color);
+            color: var(--text-light) !important;
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            background: #e03e00;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 5rem 5%;
+            background: var(--secondary-color);
+            text-align: center;
+        }
+
+        .menu h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .pizza-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .pizza-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .pizza-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pizza-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .pizza-info {
+            padding: 20px;
+        }
+
+        .price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* --- CONTACT FORM SECTION --- */
+        .contact-section {
+            padding: 5rem 20px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .contact-form button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #e03e00;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Slice of Heaven</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#contact">Order Now</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Authentic Italian Taste</h1>
+        <p>Hand-tossed dough, fresh mozzarella, and our secret family sauce. Experience the best pizza in the city.</p>
+        <a href="#menu" class="cta-button">View Our Menu</a>
+    </section>
+
+    <section class="menu" id="menu">
+        <h2>Our Customer Favorites</h2>
+        <div class="pizza-grid">
             
-            <input type="text" name="name" placeholder="Your Name" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <div class="pizza-card">
+                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Margherita">
+                <div class="pizza-info">
+                    <h3>Classic Margherita</h3>
+                    <p>Fresh basil, mozzarella, tomato sauce.</p>
+                    <span class="price">$12.99</span>
+                </div>
+            </div>
+
+            <div class="pizza-card">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pepperoni">
+                <div class="pizza-info">
+                    <h3>Pepperoni Feast</h3>
+                    <p>Double pepperoni and extra cheese.</p>
+                    <span class="price">$14.99</span>
+                </div>
+            </div>
+
+            <div class="pizza-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Veggie">
+                <div class="pizza-info">
+                    <h3>Garden Veggie</h3>
+                    <p>Peppers, onions, mushrooms, olives.</p>
+                    <span class="price">$13.99</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2>Place Your Order</h2>
+        
+        <form name="pizza-orders" method="POST" netlify class="contact-form">
             
-            <input type="email" name="email" placeholder="Your Email" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <input type="text" name="name" placeholder="Your Name" required>
             
-            <textarea name="message" placeholder="Message or Special Request" rows="4" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
             
-            <button type="submit" style="background: #ff4500; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-size: 1.1rem;">Send Message</button>
+            <input type="text" name="address" placeholder="Delivery Address" required>
+            
+            <textarea name="order-details" placeholder="What would you like to order? (e.g., 2 Pepperoni Pizzas)" rows="4" required></textarea>
+            
+            <button type="submit">Submit Order</button>
         
         </form>
     </section>
+
+    <footer>
+        <p>© 2024 Slice of Heaven Pizza Co.</p>
+        <p>123 Pizza Street, Food City</p>
+    </footer>
+
+</body>
+</html>
